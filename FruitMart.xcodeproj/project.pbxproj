@@ -14,6 +14,9 @@
 		5238EAD5240BAC930079E99D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5238EAD4240BAC930079E99D /* Preview Assets.xcassets */; };
 		5238EAD8240BAC930079E99D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5238EAD6240BAC930079E99D /* LaunchScreen.storyboard */; };
 		5238EAE7240BAEBF0079E99D /* ProductData.json in Resources */ = {isa = PBXBuildFile; fileRef = 5238EAE6240BAEBC0079E99D /* ProductData.json */; };
+		B53C8F16266EFB84003D0B88 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C8F15266EFB84003D0B88 /* Product.swift */; };
+		B54BA2462669C85600C1BD71 /* ProductRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BA2452669C85600C1BD71 /* ProductRow.swift */; };
+		B54BA24A2669C99E00C1BD71 /* ColorExtion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BA2492669C99E00C1BD71 /* ColorExtion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		5238EAD7240BAC930079E99D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5238EAD9240BAC930079E99D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5238EAE6240BAEBC0079E99D /* ProductData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProductData.json; sourceTree = "<group>"; };
+		B53C8F15266EFB84003D0B88 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		B54BA2452669C85600C1BD71 /* ProductRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRow.swift; sourceTree = "<group>"; };
+		B54BA2492669C99E00C1BD71 /* ColorExtion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,10 +83,10 @@
 		5238EADF240BAD210079E99D /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B53C8F14266EFB70003D0B88 /* Model */,
 				5238EAE0240BAD270079E99D /* Application */,
 				5238EAE1240BAD5D0079E99D /* User Interface */,
-				5238EAE4240BADA50079E99D /* Model */,
-				5238EAEC240BF9FE0079E99D /* Helper */,
+				B54BA2472669C98A00C1BD71 /* Helper */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -120,26 +126,37 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		5238EAE4240BADA50079E99D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		5238EAE5240BAE840079E99D /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				5238EACF240BAC920079E99D /* Home.swift */,
+				B54BA2452669C85600C1BD71 /* ProductRow.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		5238EAEC240BF9FE0079E99D /* Helper */ = {
+		B53C8F14266EFB70003D0B88 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B53C8F15266EFB84003D0B88 /* Product.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B54BA2472669C98A00C1BD71 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				B54BA2482669C98F00C1BD71 /* Extension */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		B54BA2482669C98F00C1BD71 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B54BA2492669C99E00C1BD71 /* ColorExtion.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,7 +186,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = Giftbot;
 				TargetAttributes = {
 					5238EAC7240BAC920079E99D = {
@@ -214,9 +231,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B54BA2462669C85600C1BD71 /* ProductRow.swift in Sources */,
+				B54BA24A2669C99E00C1BD71 /* ColorExtion.swift in Sources */,
 				5238EACC240BAC920079E99D /* AppDelegate.swift in Sources */,
 				5238EACE240BAC920079E99D /* SceneDelegate.swift in Sources */,
 				5238EAD0240BAC920079E99D /* Home.swift in Sources */,
+				B53C8F16266EFB84003D0B88 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +280,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -320,6 +341,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -354,6 +376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FruitMart/Preview Content\"";
+				DEVELOPMENT_TEAM = AYUBF3UYBE;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/FruitMart/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -373,6 +396,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FruitMart/Preview Content\"";
+				DEVELOPMENT_TEAM = AYUBF3UYBE;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/FruitMart/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
