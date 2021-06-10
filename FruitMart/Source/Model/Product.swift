@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Product {
+struct Product: Decodable, Identifiable {
+    var id: UUID = UUID()
     let name: String
     let imageName: String
     let price: Int
