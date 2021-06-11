@@ -14,7 +14,7 @@ struct Home: View {
     
     var body: some View {
         NavigationView {
-            List(store.products) { product in
+            List(store.products, id: \.name) { product in
                 NavigationLink(
                     destination: ProductDetailView(product: product),
                     label: {
