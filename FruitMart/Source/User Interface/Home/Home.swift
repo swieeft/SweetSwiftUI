@@ -10,11 +10,11 @@ import SwiftUI
 
 struct Home: View {
     
-    let store: Store
+    @EnvironmentObject private var store: Store
     
     var body: some View {
         NavigationView {
-            List(store.products, id: \.name) { product in
+            List(store.products) { product in
                 NavigationLink(
                     destination: ProductDetailView(product: product),
                     label: {
@@ -28,6 +28,6 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        return Home(store: Store(products: Product.productSamples))
+        return Home().environmentObject(Store(products: Product.productSamples))
     }
 }

@@ -12,6 +12,9 @@ struct ProductDetailView: View {
     
     let product: Product
     @State private var quantity: Int = 1
+    @State private var showingAlert: Bool = false
+    
+    @EnvironmentObject private var store: Store
     
     var body: some View {
         VStack(spacing: 0) {
@@ -19,6 +22,9 @@ struct ProductDetailView: View {
             orderView
         }
         .edgesIgnoringSafeArea([.top, .bottom])
+        .alert(isPresented: $showingAlert, content: {
+            confirmAlert
+        })
     }
     
     var productImage: some View {
@@ -54,10 +60,7 @@ struct ProductDetailView: View {
                 
                 Spacer()
                 
-                Image(systemName: "heart")
-                    .imageScale(.large)
-                    .foregroundColor(Color.peach)
-                    .frame(width: 32, height: 32)
+                FavoriteButton(product: product)
             }
             
             Text(splitText(product.description))
@@ -80,7 +83,9 @@ struct ProductDetailView: View {
     }
     
     var placeOrderButton: some View {
-        Button(action: { }, label: {
+        Button(action: {
+            self.showingAlert = true
+        }, label: {
             Capsule()
                 .fill(Color.peach)
                 .frame(maxWidth: .infinity, minHeight: 30, maxHeight: 55)
@@ -89,6 +94,19 @@ struct ProductDetailView: View {
                         .font(.system(size: 20).weight(.medium)))
                 .foregroundColor(.white)
         }).padding(.vertical, 8)
+    }
+    
+    var confirmAlert: Alert {
+        Alert(title: Text("주문 확인"),
+              message: Text("\(product.name)을(를) \(quantity)개 구매하시겠습니까?"),
+              primaryButton: .default(Text("확인"), action: {
+                self.placeOrder()
+              }),
+              secondaryButton: .cancel(Text("취소")))
+    }
+    
+    func placeOrder() {
+        store.placeOrder(product: product, quantity: quantity)
     }
     
     func splitText(_ text: String) -> String {
