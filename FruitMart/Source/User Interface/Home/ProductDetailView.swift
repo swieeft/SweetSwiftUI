@@ -13,6 +13,7 @@ struct ProductDetailView: View {
     let product: Product
     @State private var quantity: Int = 1
     @State private var showingAlert: Bool = false
+    @State private var showingPopup: Bool = false
     
     @EnvironmentObject private var store: Store
     
@@ -21,17 +22,25 @@ struct ProductDetailView: View {
             productImage
             orderView
         }
-        .edgesIgnoringSafeArea([.top, .bottom])
-        .alert(isPresented: $showingAlert, content: {
-            confirmAlert
+//        .modifier(Popup(message: Text("팝업")))
+//        .modifier(Popup(style: .blur, message: Text("팝업")))
+//        .modifier(Popup(size: CGSize(width: 200, height: 200), style: .dimmed, message: Text("팝업")))
+        .popup(isPresented: $showingAlert, style: .blur, content: {
+//            Text("팝업")
+            OrderCompletedMessage()
         })
+        .edgesIgnoringSafeArea([.top, .bottom])
+//        .alert(isPresented: $showingAlert, content: {
+//            confirmAlert
+//        })
     }
     
     var productImage: some View {
         GeometryReader { _ in
-            Image(self.product.imageName)
-                .resizable()
-                .scaledToFill()
+            ResizedImage(product.imageName)
+//            Image(self.product.imageName)
+//                .resizable()
+//                .scaledToFill()
         }
     }
     
@@ -93,7 +102,9 @@ struct ProductDetailView: View {
                     Text("주문하기")
                         .font(.system(size: 20).weight(.medium)))
                 .foregroundColor(.white)
-        }).padding(.vertical, 8)
+        })
+        .padding(.vertical, 8)
+        .buttonStyle(ShrinkButtonStyle())
     }
     
     var confirmAlert: Alert {
@@ -107,6 +118,7 @@ struct ProductDetailView: View {
     
     func placeOrder() {
         store.placeOrder(product: product, quantity: quantity)
+        showingPopup = true
     }
     
     func splitText(_ text: String) -> String {

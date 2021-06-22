@@ -68,9 +68,11 @@ private extension ProductRow {
             
             FavoriteButton(product: product)
             
-            Image(systemName: "cart")
-                .foregroundColor(Color.peach)
+            Symbol("cart", scale: .large, color: .peach)
                 .frame(width: 32, height: 32)
+//            Image(systemName: "cart")
+//                .foregroundColor(Color.peach)
+//                .frame(width: 32, height: 32)
         }
     }
 }
