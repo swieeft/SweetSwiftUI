@@ -14,25 +14,27 @@ struct ProductDetailView: View {
     @State private var quantity: Int = 1
     @State private var showingAlert: Bool = false
     @State private var showingPopup: Bool = false
+    @State private var willAppear: Bool = false
     
     @EnvironmentObject private var store: Store
     
     var body: some View {
         VStack(spacing: 0) {
-            productImage
+            if willAppear {
+                productImage
+            }
             orderView
         }
-//        .modifier(Popup(message: Text("팝업")))
-//        .modifier(Popup(style: .blur, message: Text("팝업")))
-//        .modifier(Popup(size: CGSize(width: 200, height: 200), style: .dimmed, message: Text("팝업")))
+        .edgesIgnoringSafeArea([.top, .bottom])
+        .alert(isPresented: $showingAlert, content: {
+            confirmAlert
+        })
         .popup(isPresented: $showingAlert, style: .blur, content: {
-//            Text("팝업")
             OrderCompletedMessage()
         })
-        .edgesIgnoringSafeArea([.top, .bottom])
-//        .alert(isPresented: $showingAlert, content: {
-//            confirmAlert
-//        })
+        .onAppear(perform: {
+            self.willAppear = true
+        })
     }
     
     var productImage: some View {
@@ -45,7 +47,7 @@ struct ProductDetailView: View {
     }
     
     var orderView: some View {
-        GeometryReader { _ in
+        GeometryReader {
             VStack(alignment: .leading) {
                 self.productDescription
                 Spacer()
@@ -53,6 +55,7 @@ struct ProductDetailView: View {
                 self.placeOrderButton
             }
             .padding(32)
+            .frame(height: $0.size.height + 10)
             .background(Color.white)
             .cornerRadius(16)
             .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: -5)
@@ -68,7 +71,6 @@ struct ProductDetailView: View {
                     .foregroundColor(.black)
                 
                 Spacer()
-                
                 FavoriteButton(product: product)
             }
             

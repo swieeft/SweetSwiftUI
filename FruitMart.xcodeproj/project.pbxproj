@@ -107,8 +107,8 @@
 		5238EADF240BAD210079E99D /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				B53C8F14266EFB70003D0B88 /* Model */,
 				5238EAE0240BAD270079E99D /* Application */,
+				B53C8F14266EFB70003D0B88 /* Model */,
 				5238EAE1240BAD5D0079E99D /* User Interface */,
 				B54BA2472669C98A00C1BD71 /* Helper */,
 			);
